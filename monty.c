@@ -1,3 +1,4 @@
+#define _POSIX_C_SOURCE 200809L
 #include "monty.h"
 #include <stdio.h>
 
@@ -13,6 +14,8 @@ argMonty *_args = NULL;
 
 int main(int argc, char **argv)
 {
+	size_t n = 0;
+
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -21,7 +24,7 @@ int main(int argc, char **argv)
 	init_args();
 	file_stream(argv[1]);
 
-	while (fgets(_args->line, BUFSIZ, _args->stream) != NULL)
+	while (getline(&_args->line, &n, _args->stream) != -1)
 	{
 		_args->line_num += 1;
 		tokenizer();
