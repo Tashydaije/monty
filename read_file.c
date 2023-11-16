@@ -1,5 +1,7 @@
 #include "monty.h"
 #include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
 
 /**
  * file_stream - reads a file stream from a file.
@@ -16,7 +18,7 @@ void file_stream(char *fileName)
 	if (fd == -1)
 		stream_err(fileName);
 
-	_args->stream = fdopen(fd, "r");
+	_args->stream = fopen(fileName, "r");
 	if (!(_args->stream))
 	{
 		close(fd);

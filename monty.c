@@ -13,8 +13,6 @@ argMonty *_args = NULL;
 
 int main(int argc, char **argv)
 {
-	size_t n = 0;
-
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -23,9 +21,13 @@ int main(int argc, char **argv)
 	init_args();
 	file_stream(argv[1]);
 
-	while (getline(&_args->line, &n, _args->stream) != -1)
+	while (fgets(_args->line, BUFSIZ, _args->stream) != NULL)
 	{
-		/** tokenize cmd, get opcode **/
+		_args->line_num += 1;
+		tokenizer();
+		get_op_func();
+		run_op_func();
+		free_tokens();
 	}
 	close_stream();
 	free_args();
