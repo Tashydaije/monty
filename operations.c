@@ -60,3 +60,46 @@ void pall(stack_t **stack, unsigned int line_number)
 		temp = temp->next;
 	}
 }
+
+/**
+ * pint - Prints the value at the top of the stack.
+ * @stack: The stack.
+ * @line_number: The line number.
+ *
+ * Return: void
+ */
+void pint(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	if (!(_args->head))
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		close_stream();
+		free_tokens();
+		free_args();
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", _args->head->n);
+}
+
+/**
+ * pop - Removes the top element of the stack.
+ * @stack: The stack.
+ * @line_number: The line number.
+ *
+ * Return: void
+ */
+void pop(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	if (!(_args->head))
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		close_stream();
+		free_tokens();
+		free_args();
+		exit(EXIT_FAILURE);
+	}
+	pop_stack();
+	_args->stack_len -= 1;
+}

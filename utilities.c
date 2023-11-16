@@ -25,3 +25,17 @@ int is_num(char *str)
 	}
 	return (1);
 }
+
+/**
+ * pop_stack - Pops the top element of the stack.
+ *
+ * Return: void
+ */
+void pop_stack(void)
+{
+	stack_t *temp;
+
+	temp = _args->head;
+	_args->head = _args->head->next;
+	free(temp);
+}
