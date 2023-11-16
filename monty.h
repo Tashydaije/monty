@@ -76,7 +76,7 @@ void close_stream(void);
 void tokenizer(void);
 void get_op_func(void);
 void run_op_func(void);
-void opcode_error(char *opcode);
+void opcode_err(char *opcode);
 int is_num(char *str);
 
 void push(stack_t **stack, unsigned int line_number);
