@@ -2,7 +2,16 @@
 #include "monty.h"
 #include <stdio.h>
 
+void nothing(void);
 argMonty *_args = NULL;
+
+/**
+ * nothing - Does nothing.
+ *
+ * Return: void
+ */
+
+void nothing(void){}
 
 /**
  * main - Entry point of monty application
