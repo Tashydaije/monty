@@ -29,8 +29,8 @@ void push(stack_t **stack, unsigned int line_number)
 	(*stack)->n = (int) atoi(_args->tokens[1]);
 	if (_args->head)
 	{
-		 (*stack)->next = _args->head;
-		 _args->head->prev = *stack;
+		(*stack)->next = _args->head;
+		_args->head->prev = *stack;
 	}
 	_args->head = *stack;
 	_args->stack_len += 1;
